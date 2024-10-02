@@ -2,7 +2,7 @@ import pygame
 import math
 import time
 
-
+print("Hello world")
 class Tamo:
     def __init__(self):
         self.HP = 100
