@@ -6,8 +6,6 @@ f = open('SaveFile.txt','w')
 f.write('Hello World')
 print(f.mode)
 f.close()
-print("Hello World")
-print("no")
 class Tamo:
     def __init__(self):
         self.HP = 100
