@@ -1,8 +1,10 @@
 import pygame
 import math
 import time
-
-
+import os
+f = open('SaveFile.txt','Tamogatchi?')
+print(f.mode)
+f.close()
 class Tamo:
     def __init__(self):
         self.HP = 100
@@ -14,7 +16,7 @@ class Tamo:
         self.Hygiene = 100
         self.weight = 10
         self.Action = False
-        
+
     def feed(self,amt):
         self.Hunger += amt
         if self.Hunger >=100: 
