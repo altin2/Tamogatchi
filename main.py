@@ -28,6 +28,30 @@ class Tamo:
     #     self.Thirst -=hours*3
     #     self.Intellegence +=hours*2
 
+    def clean(self, amt):
+        
+        if not self.Action:
+            self.Hygiene += amt
+
+        return self.Hygiene
+    
+    def grow(self, amt):
+
+        self.Age += amt
+
+        return self.Age
+    
+    def play(self, time):
+
+        self.Happiness += 10
+        self.Hygiene -= 10
+
+        self.Hunger -= 10
+
+    def away(self,hours):
+
+        self.Hunger -= hours*2
+
 
 
 
