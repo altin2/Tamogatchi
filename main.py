@@ -17,7 +17,10 @@ def tamoEvolution(tamo, evolution):
 
     currentEvo = None
     state = tamo.checkEvolve(evolution)
-    carryInfo = tamo.carryOver()
+    age = tamo.carryOver()[0]
+    intel = tamo.carryOver()[1]
+    weight = tamo.carryOver()[2]
+    strength = tamo.carryOver()[3]
 
     evolution == state[1]
     
@@ -30,8 +33,16 @@ def tamoEvolution(tamo, evolution):
         return currentEvo,evolution
     
     elif state[0] == 'intelligent':
-        #do stuff
-        print('hi')
+        currentEvo = intelligent1(age, intel, weight, strength)
+        return currentEvo,evolution
+    
+    elif state[0] == 'strong':
+        currentEvo = strong1(age, intel, weight, strength)
+        return currentEvo, evolution
+    
+    elif state[0] == 'balanced':
+        currentEvo = balanced1(age, intel, weight, strength)
+        return currentEvo, evolution
 
 #evolution = tamoEvolution(pointer, evolution)[1]
 #pointer = tamoEvolution(pointer,evolution)[2]]
