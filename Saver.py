@@ -10,6 +10,11 @@ class Tamo:
         self.weight = 10
         self.Strength = 50
         self.Action = False
+
+    def carryOver(self):
+
+        return self.Age, self.Intellegence, self.weight, self.Strength
+
     def showall(self):
         print(self.HP)
         print(self.Happiness)
@@ -19,6 +24,7 @@ class Tamo:
         print(self.Intellegence)
         print(self.Hygiene)
         print(self.weight)
+        print(self.Strength)
         print(self.Action)
 
     def feed(self,amt):
@@ -32,6 +38,7 @@ class Tamo:
         self.Thirst -=(hours*3)
         self.Hygiene -= (hours*4)
         self.Happiness = self.Happiness+(hours*2)
+        self.Strength += (hours*2)
 
     def read(self,hours):
         self.Hunger -=hours
@@ -138,7 +145,8 @@ class egg(Tamo):
     def __init__(self):
 
         Tamo.__init__(self)
-        Tamo.HP = 25
+        self.HP = 25
+        self.Strength = 10
 
     def feed(self):
 
@@ -157,7 +165,48 @@ class child(Tamo):
     def __init__(self):
 
         Tamo.__init__(self)
-        Tamo.HP = 50
+        self.HP = 50
+        self.Strength = 25
+
+    def checkHunger(self, frameRate):
+
+        if self.Hunger == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Hunger > 0:
+            self.Hunger -= (1/frameRate)
+            if self.Hunger > 100:
+                self.weight += (1/frameRate)
+
+    def checkThirst(self, frameRate):
+        #less health and uses food and water quicker
+        
+        if self.Thirst == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Thirst > 0:
+            self.Hunger -= (1/frameRate)
+
+class balanced1(Tamo):
+
+    def __init__(self,a,i,w,s):
+
+        Tamo.__init__(self)
+        self.Age = a
+        self.Intellegence = i
+        self.Weight = w
+        self.Strength = s
+
+class strong1(Tamo):
+    #uses hunger and thirst quicker but makes strength quicker
+    
+    def __init__(self,a,i,w,s):
+
+        Tamo.__init__(self)
+        self.Age = a
+        self.Intellegence = i
+        self.Weight = w
+        self.Strength = s
 
     def checkHunger(self, frameRate):
 
@@ -176,3 +225,10 @@ class child(Tamo):
         
         elif self.Thirst > 0:
             self.Hunger -= (1/frameRate)
+
+    def exercise(self,hours):
+        self.Hunger -=(hours*2)
+        self.Thirst -=(hours*3)
+        self.Hygiene -= (hours*4)
+        self.Happiness = self.Happiness+(hours*2)
+        self.Strength += (hours*4)
