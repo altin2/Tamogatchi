@@ -8,9 +8,10 @@ from Saver import *
 OpenedAt = datetime.now()
 f = open('Save.txt','r+')
 Names = ['Tom','Altin']
-f.write(Names)
-OrigionalNames = f.readline()
-
+f.write(str(Names))
+OrigionalNames = f.read()
+print('Flag 1')
+print(str(OrigionalNames))
 
 def tamoEvolution(tamo, evolution):
 
