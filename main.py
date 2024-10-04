@@ -6,11 +6,11 @@ from datetime import datetime
 from Saver import *
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 #ast.literal_eval(X) converts list to string 
-global f
+global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
 def assignattributes():
-    attributes = loadattributes()
-    tamo.HP = attributes[0]
+    attributes = loadattributes() #this is a list
+    tamo.HP = attributes[0] # assings the loaded values to the tamogatchi
     tamo.Hunger = attributes[1]
     tamo.Happiness =attributes[2]
     tamo.Thirst = attributes[3]
@@ -63,10 +63,10 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 assignattributes()
-tamo.feed(20)
+tamo.feed(20) # testing, we can reassign hunger and weight back to its origional value later. 
 Quitgame = input("Quit game? ")
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
 if Quitgame == 'yes':
-    tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2)
+    tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
     saveattributes(tamo)
