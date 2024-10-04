@@ -9,7 +9,8 @@ OpenedAt = datetime.now()
 f = open('Save.txt','r+')
 List = []
 def saveattributes(tamogat):
-    List = []
+    List = [tamogat.getterAtt()]
+    f.write(List)
 x = f.readline()
 newlist = ast.literal_eval(x)
 print(newlist[0]+newlist[1])
