@@ -1,17 +1,15 @@
 import pygame
 import math
 import time
-import os
-import pickle
 from datetime import datetime 
 from Saver import *
 OpenedAt = datetime.now()
 f = open('Save.txt','r+')
 Names = ['Tom','Altin']
 f.write(str(Names))
-OrigionalNames = f.read()
+OrigionalNames = f.readline()
 print('Flag 1')
-print(str(OrigionalNames))
+f.close()
 
 def tamoEvolution(tamo, evolution):
 
