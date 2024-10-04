@@ -27,6 +27,8 @@ class Tamo:
         print(self.Strength)
         print(self.Action)
 
+        return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength, self.Action
+
     def feed(self,amt):
         self.Hunger += amt
         if self.Hunger >=100: 
@@ -232,3 +234,37 @@ class strong1(Tamo):
         self.Hygiene -= (hours*4)
         self.Happiness = self.Happiness+(hours*2)
         self.Strength += (hours*4)
+
+class intelligent1(Tamo):
+    #uses hunger and thirst quicker but makes intellegence quicker
+    
+    def __init__(self,a,i,w,s):
+
+        Tamo.__init__(self)
+        self.Age = a
+        self.Intellegence = i
+        self.Weight = w
+        self.Strength = s
+
+    def checkHunger(self, frameRate):
+
+        if self.Hunger == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Hunger > 0:
+            self.Hunger -= (1/frameRate)
+            if self.Hunger > 100:
+                self.weight += (1/frameRate)
+
+    def checkThirst(self, frameRate):
+        
+        if self.Thirst == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Thirst > 0:
+            self.Hunger -= (1/frameRate)
+
+    def read(self,hours):
+        self.Hunger -=hours
+        self.Thirst -=hours*3
+        self.Intellegence +=hours*4

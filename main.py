@@ -17,6 +17,8 @@ def tamoEvolution(tamo, evolution):
 
     currentEvo = None
     state = tamo.checkEvolve(evolution)
+    carryInfo = tamo.carryOver()
+
     evolution == state[1]
     
     if state[0] == 'egg':
@@ -31,5 +33,5 @@ def tamoEvolution(tamo, evolution):
         #do stuff
         print('hi')
 
-#evolution = tamoEvolution(pointer, evolution)[1]
-#pointer = tamoEvolution(pointer,evolution)[2]
+#evolution = tamoEvolution(pointer, evolution)[0]
+#pointer = tamoEvolution(pointer,evolution)[1]
