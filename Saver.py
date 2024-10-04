@@ -58,3 +58,16 @@ class Tamo:
 
         self.Hunger -= hours*2
 tamo = Tamo()
+
+
+class egg(Tamo):
+
+    def __init__(self):
+
+        Tamo.__init__(self)
+
+class child(Tamo):
+
+    def __init__(self):
+
+        Tamo.__init__(self)
