@@ -137,6 +137,7 @@ class egg(Tamo):
     def __init__(self):
 
         Tamo.__init__(self)
+        Tamo.HP = 25
 
     def feed(self):
 
@@ -155,3 +156,22 @@ class child(Tamo):
     def __init__(self):
 
         Tamo.__init__(self)
+        Tamo.HP = 50
+
+    def checkHunger(self, frameRate):
+
+        if self.Hunger == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Hunger > 0:
+            self.Hunger -= (1/frameRate)
+            if self.Hunger > 100:
+                self.weight += (1/frameRate)
+
+    def checkThirst(self, frameRate):
+        
+        if self.Thirst == 0:
+            self.HP -= (1/frameRate)
+        
+        elif self.Thirst > 0:
+            self.Hunger -= (1/frameRate)
