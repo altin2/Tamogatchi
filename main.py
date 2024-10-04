@@ -1,14 +1,16 @@
 import pygame
 import math
 import time
+import ast
 from datetime import datetime 
 from Saver import *
 OpenedAt = datetime.now()
 f = open('Save.txt','r+')
-Names = ['Tom','Altin']
-f.write(str(Names))
 OrigionalNames = f.readline()
 print('Flag 1')
+newlist = ast.literal_eval(OrigionalNames)
+print(newlist)
+print(newlist[0])
 f.close()
 
 def tamoEvolution(tamo, evolution):
