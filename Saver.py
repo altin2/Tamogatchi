@@ -138,6 +138,18 @@ class egg(Tamo):
 
         Tamo.__init__(self)
 
+    def feed(self):
+
+        return 'too young'
+    
+    def excercise(self):
+        
+        return 'too young'
+    
+    def read(self):
+        
+        return 'too young'
+
 class child(Tamo):
 
     def __init__(self):
