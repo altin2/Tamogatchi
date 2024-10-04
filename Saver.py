@@ -8,6 +8,7 @@ class Tamo:
         self.Intellegence = 50
         self.Hygiene = 100
         self.weight = 10
+        self.Strength = 50
         self.Action = False
     def showall(self):
         print(self.HP)
