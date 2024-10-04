@@ -5,14 +5,14 @@ import ast
 from datetime import datetime 
 from Saver import *
 OpenedAt = datetime.now()
+#ast.literal_eval(X) converts list to string 
 f = open('Save.txt','r+')
-OrigionalNames = f.readline()
-print('Flag 1')
-newlist = ast.literal_eval(OrigionalNames)
-print(newlist)
-print(newlist[0])
-f.close()
-
+List = []
+def saveattributes(tamogat):
+    List = []
+x = f.readline()
+newlist = ast.literal_eval(x)
+print(newlist[0]+newlist[1])
 def tamoEvolution(tamo, evolution):
 
     currentEvo = None
@@ -32,4 +32,4 @@ def tamoEvolution(tamo, evolution):
         print('hi')
 
 #evolution = tamoEvolution(pointer, evolution)[1]
-#pointer = tamoEvolution(pointer,evolution)[2]
+#pointer = tamoEvolution(pointer,evolution)[2]]
