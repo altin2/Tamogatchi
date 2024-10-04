@@ -26,7 +26,8 @@ class Tamo:
         print(self.weight)
         print(self.Strength)
         print(self.Action)
-
+    
+    def getterAtt(self): 
         return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength, self.Action
 
     def feed(self,amt):
