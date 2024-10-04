@@ -9,6 +9,7 @@ class Tamo:
         self.Hygiene = 100
         self.weight = 10
         self.Strength = 50
+        self.LastOnline = 0
         self.Action = False
 
     def carryOver(self):
@@ -28,7 +29,7 @@ class Tamo:
         print(self.Action)
     
     def getterAtt(self): 
-        return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength, self.Action
+        return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength,self.LastOnline, self.Action
 
     def feed(self,amt):
         self.Hunger += amt
