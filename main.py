@@ -8,6 +8,10 @@ OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 #ast.literal_eval(X) converts list to string 
 global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
+
+pointer = egg()
+evolution = 0
+
 def assignattributes():
     attributes = loadattributes() #this is a list
     tamo.HP = attributes[0] # assings the loaded values to the tamogatchi
@@ -62,6 +66,13 @@ def tamoEvolution(tamo, evolution):
     elif state[0] == 'balanced':
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
+
+evolution = tamoEvolution(pointer, evolution)[1]
+temp_pointer = tamoEvolution(pointer,evolution)[0]
+
+tamo = temp_pointer
+
+
 assignattributes()
 tamo.feed(20) # testing, we can reassign hunger and weight back to its origional value later. 
 Quitgame = input("Quit game? ")

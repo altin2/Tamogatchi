@@ -140,10 +140,6 @@ class Tamo:
         
         #keep adding onto this
 
-
-tamo = Tamo()
-
-
 class egg(Tamo):
 
     def __init__(self):
