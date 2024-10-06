@@ -1,3 +1,5 @@
+import pygame
+
 class Tamo:
     def __init__(self):
         self.HP = 100
@@ -142,11 +144,32 @@ class Tamo:
 
 class egg(Tamo):
 
-    def __init__(self):
+    def __init__(self, state = 0):
 
         Tamo.__init__(self)
         self.HP = 25
         self.Strength = 10
+
+        if state == 0:
+            self.image = pygame.image.load('eggState1.png')
+            self.rect = self.image.get_rect()
+            # add positions
+            #self.rect.topleft = [x_pos,y_pos]
+        elif state == 1:
+            self.image = pygame.image.load('eggState2.png')
+            self.rect = self.image.get_rect()
+            # add positions
+            #self.rect.topleft = [x_pos,y_pos]
+        elif state == 2:
+            self.image = pygame.image.load('eggState3.png')
+            self.rect = self.image.get_rect()
+            # add positions
+            #self.rect.topleft = [x_pos,y_pos]
+        elif state == 3:
+            self.image = pygame.image.load('eggState4.png')
+            self.rect = self.image.get_rect()
+            # add positions
+            #self.rect.topleft = [x_pos,y_pos]
 
     def feed(self):
 
@@ -159,14 +182,55 @@ class egg(Tamo):
     def read(self):
         
         return 'too young'
-
-class child(Tamo):
+    
+class toddler(Tamo):
 
     def __init__(self):
 
         Tamo.__init__(self)
         self.HP = 50
         self.Strength = 25
+        
+        self.state = 0
+
+        if self.state == 0:
+            self.image = pygame.image.load('tamoToddler.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+
+        elif self.state == 1:
+            self.image = pygame.image.load('toddlerPlayAnim1.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+
+        elif self.state == 2:
+            self.image = pygame.image.load('toddlerPlayAnim2.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+        
+        elif self.state == 3:
+            self.image = pygame.image.load('toddlerPlayAnim3.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+        
+        elif self.state == 4:
+            self.image = pygame.image.load('toddlerPlayAnim4.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+        
+        elif self.state == 5:
+            self.image = pygame.image.load('toddlerPlayAnim5.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+        
+        elif self.state == 6:
+            self.image = pygame.image.load('toddlerPlayAnim6.png')
+            self.rect = self.image.get_rect()
+            #self.rect.topleft = [x_pos,y_pos]
+
+    def setState(self, amt):
+
+        self.state = amt
 
     def checkHunger(self, frameRate):
 
@@ -186,6 +250,12 @@ class child(Tamo):
         
         elif self.Thirst > 0:
             self.Hunger -= (1/frameRate)
+
+    def play(self, time):
+        self.Happiness += 20
+        self.Hygiene -= 10
+
+        self.Hunger -= 15
 
 class balanced1(Tamo):
 

@@ -4,6 +4,7 @@ import time
 import ast
 from datetime import datetime 
 from Saver import *
+from tamoAnim import *
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 #ast.literal_eval(X) converts list to string 
 global f #this is our save file. we need to make this global becuase we use it in functions.
@@ -48,11 +49,11 @@ def tamoEvolution(tamo, evolution):
     evolution == state[1]
     
     if state[0] == 'egg':
-        currentEvo = egg()
+        currentEvo = egg(tamo.Age)
         return currentEvo,evolution
     
     elif state[0] == 'child':
-        currentEvo = child()
+        currentEvo = toddler()
         return currentEvo,evolution
     
     elif state[0] == 'intelligent':
@@ -82,3 +83,4 @@ Quitgame = input("Quit game? ")
 if Quitgame == 'yes':
     tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
     saveattributes(tamo)
+
