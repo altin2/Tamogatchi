@@ -63,10 +63,11 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 assignattributes()
-tamo.feed(20) # testing, we can reassign hunger and weight back to its origional value later. 
-Quitgame = input("Quit game? ")
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
+tamo.away(Timedifference)
+Quitgame = input("Quit game? ")
+
 if Quitgame == 'yes':
     tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
     saveattributes(tamo)
