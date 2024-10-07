@@ -7,7 +7,7 @@ from Saver import *
 from tamoAnim import *
 pygame.init()
 # screen resolution
-res = (1024,720)
+res = (680,680)
 # opens up a window
 screen = pygame.display.set_mode(res)
 
@@ -19,8 +19,8 @@ OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
 
-pointer = egg()
-evolution = 0
+# pointer = egg()
+# evolution = 0
 
 def assignattributes():
     attributes = loadattributes() #this is a list
@@ -78,10 +78,10 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 
-evolution = tamoEvolution(pointer, evolution)[1]
-temp_pointer = tamoEvolution(pointer,evolution)[0]
-
-tamo = temp_pointer
+# evolution = tamoEvolution(pointer, evolution)[1]
+# temp_pointer = tamoEvolution(pointer,evolution)[0]
+tamo = Tamo()
+# tamo = temp_pointer
 assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
@@ -100,7 +100,7 @@ while True:
             tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
             saveattributes(tamo)
             pygame.quit()
-            
+    screen.fill((255,255,255))      
 
     #general tamo updates
 
@@ -110,17 +110,17 @@ while True:
     tamo.checkAge(60)
 
 
-    keys = pygame.key.get_pressed()
-    char = pygame.key.name(event.key)
+    # keys = pygame.key.get_pressed()
+    # char = pygame.key.name(event.key)
 
     typing = False
 
     # if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
     #     typing = True
 
-    if typing:
-        name = name + char
-        if keys[pygame.K_BACKSPACE]:
-            typing = False
-            tamo.name = name
-
+    # if typing:
+    #     name = name + char
+    #     if keys[pygame.K_BACKSPACE]:
+    #         typing = False
+    #         tamo.name = name
+    pygame.display.update()
