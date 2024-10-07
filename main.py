@@ -7,7 +7,7 @@ from Saver import *
 from tamoAnim import *
 pygame.init()
 # screen resolution
-res = (1024,720)f
+res = (1024,720)
 # opens up a window
 screen = pygame.display.set_mode(res)
 
@@ -95,16 +95,24 @@ if Quitgame == 'yes':
 #BELOW TO BE PUT IN MAIN WHILE LOOP
 
 name = ''
-keys = pygame.key.get_pressed()
-char = pygame.key.name(event.key)
 
-typing = False
+while True:
 
-if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
-    typing = True
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: 
+            pygame.quit()
 
-if typing:
-    name = name + char
-    if keys[pygame.K_BACKSPACE]:
-        typing = False
-        tamo.name = name
+    keys = pygame.key.get_pressed()
+    char = pygame.key.name(event.key)
+
+    typing = False
+
+    if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
+        typing = True
+
+    if typing:
+        name = name + char
+        if keys[pygame.K_BACKSPACE]:
+            typing = False
+            tamo.name = name
+
