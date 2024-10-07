@@ -108,10 +108,10 @@ while True:
 
     #general tamo updates
 
-    tamo.checkHunger
-    tamo.checkThirst
-    tamo.checkHygiene
-    tamo.checkAge
+    tamo.checkHunger(60)
+    tamo.checkThirst(60)
+    tamo.checkHygiene(60)
+    tamo.checkAge(60)
 
 
     keys = pygame.key.get_pressed()
