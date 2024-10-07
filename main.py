@@ -102,14 +102,15 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             pygame.quit()
+    
 
     keys = pygame.key.get_pressed()
     char = pygame.key.name(event.key)
 
     typing = False
 
-    if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
-        typing = True
+    # if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
+    #     typing = True
 
     if typing:
         name = name + char
