@@ -1,4 +1,5 @@
 import pygame
+import os
 
 class Tamo:
     def __init__(self):
@@ -155,19 +156,19 @@ class egg(Tamo):
         self.Strength = 10
 
         if state == 0:
-            self.image = pygame.image.load('eggStage1.png')
+            self.image = pygame.image.load('tamoImages\eggStage1.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
         elif state == 1:
-            self.image = pygame.image.load('eggStage2.png')
+            self.image = pygame.image.load('tamoImages\eggStage2.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
         elif state == 2:
-            self.image = pygame.image.load('eggStage3.png')
+            self.image = pygame.image.load('tamoImages\eggStage3.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
         elif state == 3:
-            self.image = pygame.image.load('eggStage4.png')
+            self.image = pygame.image.load('tamoImages\eggStage4.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
 
