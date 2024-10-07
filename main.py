@@ -143,7 +143,11 @@ while True:
                     count += 1
                     pressed = True
 
+    print(tamo.Hunger)
+
     print(count)
     buttons.draw(screen)
 
     pygame.display.update()
+
+    dt = clock.tick(60) / 1000
