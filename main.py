@@ -86,7 +86,7 @@ assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
 
-
+print(tamo.name)
 tamo.away(Timedifference)
 
 #BELOW TO BE PUT IN MAIN WHILE LOOP
