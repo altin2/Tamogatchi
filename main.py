@@ -141,12 +141,12 @@ while True:
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:    
                     tamo.feed(2)
-                    print(round(tamo.Hunger,2),' ', round(tamo.weight,2))
+                    #print(round(tamo.Hunger,2),' ', round(tamo.weight,2))
                     pressed = True
 
-    print(tamo.Hunger)
+    print(round(tamo.Hunger))
+    print('weight = ',round(tamo.weight))
 
-    print(count)
     buttons.draw(screen)
 
     pygame.display.update()
