@@ -84,3 +84,21 @@ if Quitgame == 'yes':
     tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
     saveattributes(tamo)
 
+
+
+#BELOW TO BE PUT IN MAIN WHILE LOOP
+
+name = ''
+keys = pygame.key.get_pressed()
+char = pygame.key.name(event.key)
+
+typing = False
+
+if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
+    typing = True
+
+if typing:
+    name = name + char
+    if keys[pygame.K_BACKSPACE]:
+        typing = False
+        tamo.name = name
