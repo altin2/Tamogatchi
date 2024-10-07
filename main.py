@@ -110,10 +110,10 @@ while True:
 
     #general tamo updates
 
-    tamo.checkHunger(60)
-    tamo.checkThirst(60)
-    tamo.checkHygiene(60)
-    tamo.checkAge(60)
+    # tamo.checkHunger(60)
+    # tamo.checkThirst(60)
+    # tamo.checkHygiene(60)
+    # tamo.checkAge(60)
 
     button = test_button()
     buttons.add(button)
@@ -140,10 +140,9 @@ while True:
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:    
-                    count += 1
+                    tamo.feed(2)
+                    print(tamo.Hunger,' ', tamo.weight)
                     pressed = True
-
-    print(count)
     buttons.draw(screen)
 
     pygame.display.update()
