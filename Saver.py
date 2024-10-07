@@ -2,6 +2,9 @@ import pygame
 
 class Tamo:
     def __init__(self):
+
+        pygame.sprite.Sprite.__init__(self)
+
         self.name = None
         self.HP = 100
         self.Hunger = 100
@@ -154,23 +157,19 @@ class egg(Tamo):
         if state == 0:
             self.image = pygame.image.load('eggState1.png')
             self.rect = self.image.get_rect()
-            # add positions
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [310,310]
         elif state == 1:
             self.image = pygame.image.load('eggState2.png')
             self.rect = self.image.get_rect()
-            # add positions
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [310,310]
         elif state == 2:
             self.image = pygame.image.load('eggState3.png')
             self.rect = self.image.get_rect()
-            # add positions
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [310,310]
         elif state == 3:
             self.image = pygame.image.load('eggState4.png')
             self.rect = self.image.get_rect()
-            # add positions
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [310,310]
 
     def feed(self):
 
