@@ -32,7 +32,7 @@ class Tamo:
         print(self.Action)
     
     def getterAtt(self): 
-        return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength,self.LastOnline, self.Action
+        return self.HP, self.Hunger, self.Happiness, self.Thirst, self.Age, self.Intellegence, self.Hygiene, self.weight, self.Strength,self.LastOnline, self.Action,self.name
 
     def feed(self,amt):
         self.Hunger += amt

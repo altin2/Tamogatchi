@@ -32,10 +32,11 @@ def assignattributes():
     tamo.Strength = attributes[8]
     tamo.LastOnline = attributes[9]
     tamo.Action = attributes[10]
+    tamo.name = attributes[11]
 def saveattributes(tamogat):
     List1 = []
     f = open('Save.txt',"w")
-    for i in range(11):
+    for i in range(12):
         List1.append(tamogat.getterAtt()[i])
     f.write(str(List1))
 def loadattributes():
