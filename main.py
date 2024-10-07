@@ -133,11 +133,15 @@ while True:
     #         typing = False
     #         tamo.name = name
 
+    if not pygame.mouse.get_pressed()[0]:
+        pressed = False
+
     if not pressed:
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:    
                     count += 1
+                    pressed = True
 
     print(count)
     buttons.draw(screen)
