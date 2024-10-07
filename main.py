@@ -147,6 +147,9 @@ while True:
     print(round(tamo.Hunger))
     print('weight = ',round(tamo.weight))
 
+    # print(tamo.Hunger)
+
+    # print(count)
     buttons.draw(screen)
 
     pygame.display.update()
