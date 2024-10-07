@@ -5,6 +5,7 @@ import ast
 from datetime import datetime 
 from Saver import *
 from tamoAnim import *
+from buttons import *
 pygame.init()
 # screen resolution
 res = (680,680)
@@ -92,6 +93,10 @@ tamo.away(Timedifference)
 #BELOW TO BE PUT IN MAIN WHILE LOOP
 
 name = ''
+pressed = False
+
+buttons = pygame.sprite.Group()
+count = 0
 
 while True:
 
@@ -109,6 +114,9 @@ while True:
     tamo.checkHygiene(60)
     tamo.checkAge(60)
 
+    button = test_button()
+    buttons.add(button)
+    
 
     # keys = pygame.key.get_pressed()
     # char = pygame.key.name(event.key)
@@ -123,4 +131,10 @@ while True:
     #     if keys[pygame.K_BACKSPACE]:
     #         typing = False
     #         tamo.name = name
+
+    if button.collidepoint(pygame.mouse.get_pos()) and not pressed:
+        count += 1
+
+    print(count)
+
     pygame.display.update()
