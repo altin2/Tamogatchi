@@ -7,7 +7,7 @@ from Saver import *
 from tamoAnim import *
 pygame.init()
 # screen resolution
-res = (1024,720)f
+res = (1024,720)
 # opens up a window
 screen = pygame.display.set_mode(res)
 
