@@ -2,6 +2,7 @@ import pygame
 
 class Tamo:
     def __init__(self):
+        self.name = None
         self.HP = 100
         self.Hunger = 100
         self.Happiness = 100
