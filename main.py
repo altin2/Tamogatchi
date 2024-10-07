@@ -110,10 +110,10 @@ while True:
 
     #general tamo updates
 
-    # tamo.checkHunger(60)
-    # tamo.checkThirst(60)
-    # tamo.checkHygiene(60)
-    # tamo.checkAge(60)
+    tamo.checkHunger(60)
+    tamo.checkThirst(60)
+    tamo.checkHygiene(60)
+    tamo.checkAge(60)
 
     button = test_button()
     buttons.add(button)
