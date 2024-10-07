@@ -14,6 +14,7 @@ screen = pygame.display.set_mode(res)
 clock = pygame.time.Clock()
 
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
+
 #ast.literal_eval(X) converts list to string 
 global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
@@ -81,19 +82,12 @@ evolution = tamoEvolution(pointer, evolution)[1]
 temp_pointer = tamoEvolution(pointer,evolution)[0]
 
 tamo = temp_pointer
-
-
 assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
+
+
 tamo.away(Timedifference)
-Quitgame = input("Quit game? ")
-
-if Quitgame == 'yes':
-    tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
-    saveattributes(tamo)
-
-
 
 #BELOW TO BE PUT IN MAIN WHILE LOOP
 
@@ -103,8 +97,10 @@ while True:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
+            tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
+            saveattributes(tamo)
             pygame.quit()
-    
+            
 
     #general tamo updates
 
