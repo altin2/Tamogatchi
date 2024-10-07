@@ -11,6 +11,8 @@ res = (1024,720)
 # opens up a window
 screen = pygame.display.set_mode(res)
 
+clock = pygame.time.Clock()
+
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 #ast.literal_eval(X) converts list to string 
 global f #this is our save file. we need to make this global becuase we use it in functions.
@@ -102,6 +104,14 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             pygame.quit()
+
+    #general tamo updates
+
+    tamo.checkHunger
+    tamo.checkThirst
+    tamo.checkHygiene
+    tamo.checkAge
+
 
     keys = pygame.key.get_pressed()
     char = pygame.key.name(event.key)
