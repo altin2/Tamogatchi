@@ -8,7 +8,6 @@ def toddlerPlay(tamo, iter):
     age = tamo.carryOver()[0]
     intel = tamo.carryOver()[1]
     weight = tamo.carryOver()[2]
-
     if iter < 6:
         tamo.state = 1
     elif iter < 12:

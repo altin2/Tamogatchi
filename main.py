@@ -89,20 +89,21 @@ Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
 
 print(tamo.name)
-tamo.away(Timedifference)
-
+tamo.away(Timedifference) 
+pressed = False
 #BELOW TO BE PUT IN MAIN WHILE LOOP
-def isButtonpressed(button,pressed,tamo):
+name = ''
+def isButtonPressed(button):
+    global pressed
     if not pygame.mouse.get_pressed()[0]:
-        print('not pressed')
-        return False
+        pressed = False
+
     if not pressed:
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:  
-                    print('pressed')
                     button.action(tamo)
-                    return True
+                    pressed = True
 
 name = ''
 pressed = False
@@ -148,13 +149,7 @@ while True:
     #     if keys[pygame.K_BACKSPACE]:
     #         typing = False
     #         tamo.name = name
-
-    print(isButtonpressed(button, pressed, tamo))
-    if isButtonpressed(button, pressed, tamo) != None:
-        pressed = isButtonpressed(button, pressed, tamo)
-    
-
-    print('the pressed is ', pressed)
+    isButtonPressed(button)
 
     print(tamo.Hunger)
 
