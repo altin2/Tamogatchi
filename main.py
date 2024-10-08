@@ -10,9 +10,10 @@ from buttons import *
 pygame.init()
 # screen resolution
 res = (680,680)
+black = (0,0,0)
 # opens up a window
 screen = pygame.display.set_mode(res)
-
+font = pygame.font.Font('freesansbold.ttf', 32)
 clock = pygame.time.Clock()
 
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
@@ -80,10 +81,15 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 
+ 
+# create a text surface object,
+# on which text is drawn on it.
+
 # evolution = tamoEvolution(pointer, evolution)[1]
 # temp_pointer = tamoEvolution(pointer,evolution)[0]
 tamo = Tamo()
 # tamo = temp_pointer
+
 assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
 print(f'Last opened {Timedifference} hours ago')
@@ -110,12 +116,6 @@ pressed = False
 
 buttons = pygame.sprite.Group()
 count = 0
-    # set button = class of button
-    # if not pressed:
-    #     if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
-    #         if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
-    #             if pygame.mouse.get_pressed()[0]:  
-                        #pressed = True
 while True:
 
     for event in pygame.event.get():
@@ -126,18 +126,20 @@ while True:
     screen.fill((255,255,255))      
 
     #general tamo updates
-
+    HungerText = Hungertext(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black))
+    screen.blit(HungerText,HungerText.rect)
     tamo.checkHunger(60)
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
 
-    button = test_button()
-    buttons.add(button)
+    Feedbutton = feedbutton()
+    Drinkbutton = drinkbutton()
+    buttons.add(Feedbutton)
+    buttons.add(Drinkbutton)
     
 
-    # keys = pygame.key.get_pressed()
-    # char = pygame.key.name(event.key)
+
 
     typing = False
 
@@ -149,9 +151,8 @@ while True:
     #     if keys[pygame.K_BACKSPACE]:
     #         typing = False
     #         tamo.name = name
-    isButtonPressed(button)
-
-    print(tamo.Hunger)
+    isButtonPressed(Feedbutton)
+    isButtonPressed(Drinkbutton)
 
     # print(count)
     buttons.draw(screen)

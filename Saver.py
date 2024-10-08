@@ -43,7 +43,10 @@ class Tamo:
         if self.Hunger >=100: 
             self.weight = self.weight+((self.Hunger-100)/5)
         return self.Hunger,self.weight
-    
+    def drink(self,amt):
+        self.Thirst += amt
+        if self.Thirst >= 100:
+            self.Thirst = 100
     def exercise(self,hours):
         self.Hunger -=(hours*2)
         self.Thirst -=(hours*3)
