@@ -21,8 +21,11 @@ class drinkbutton(pygame.sprite.Sprite):
     def action(self, tamo):
         tamo.drink(5)
         print(tamo.Thirst)
-class Hungertext:
-    def __init__(self,Text):
+class ScreenText(pygame.sprite.Sprite):
+    def __init__(self,Text, center):
+        pygame.sprite.Sprite.__init__(self)
         self.Text = Text
-        self.rect = self.Text.get_rect()
-        self.rect.center = [100,100]
+        self.center = center
+        self.rect = self.Text.get_rect(center = self.center)
+
+

@@ -126,8 +126,7 @@ while True:
     screen.fill((255,255,255))      
 
     #general tamo updates
-    HungerText = Hungertext(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black))
-    screen.blit(HungerText,HungerText.rect)
+    
     tamo.checkHunger(60)
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
@@ -135,28 +134,25 @@ while True:
 
     Feedbutton = feedbutton()
     Drinkbutton = drinkbutton()
+    HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(120,100))
+    ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(120,150))
+    WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(120,200))
+    AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(120,250))
+    HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(120,300))
     buttons.add(Feedbutton)
     buttons.add(Drinkbutton)
-    
-
-
-
-    typing = False
-
-    # if type_box.collidepoint(pygame.mouse.get_pos()) and pygame.mouse.get_pressed():
-    #     typing = True
-
-    # if typing:
-    #     name = name + char
-    #     if keys[pygame.K_BACKSPACE]:
-    #         typing = False
-    #         tamo.name = name
+    #Showing text
+    screen.blit(HungerText.Text,HungerText.rect)
+    screen.blit(ThirstText.Text,ThirstText.rect)
+    screen.blit(WeightText.Text,WeightText.rect)
+    screen.blit(AgeText.Text,AgeText.rect)
+    screen.blit(HPText.Text,HPText.rect)
+    #Showing buttons
     isButtonPressed(Feedbutton)
     isButtonPressed(Drinkbutton)
 
     # print(count)
     buttons.draw(screen)
-
     pygame.display.update()
 
     dt = clock.tick(60) / 1000

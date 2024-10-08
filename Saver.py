@@ -84,20 +84,21 @@ class Tamo:
     #they will need to be called each tick in the main while loop
     def checkHunger(self, frameRate):
 
-        if self.Hunger == 0:
-            self.HP -= (1/frameRate)
+        if self.Hunger <= 0:
+            if self.weight <= 20:
+                self.HP -= (1/frameRate)
+            else:
+                self.weight -= (0.5/frameRate)
         
         elif self.Hunger > 0:
             self.Hunger -= (0.5/frameRate)
-            if self.Hunger > 100:
-                self.weight += (1/frameRate)
 
     def checkThirst(self, frameRate):
         
         if self.Thirst == 0:
             self.HP -= (1/frameRate)
         
-        elif self.Thirst > 0:
+        elif self.Thirst > 0 and self.Hunger >0:
             self.Hunger -= (0.5/frameRate)
 
     def checkHygiene(self, frameRate):
