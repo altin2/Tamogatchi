@@ -92,13 +92,25 @@ print(tamo.name)
 tamo.away(Timedifference)
 
 #BELOW TO BE PUT IN MAIN WHILE LOOP
-
+def isButtonpressed(button,pressed):
+    if not pygame.mouse.get_pressed()[0]:
+        return False
+    if not pressed:
+        if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
+            if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
+                if pygame.mouse.get_pressed()[0]:  
+                    return True
 name = ''
 pressed = False
 
 buttons = pygame.sprite.Group()
 count = 0
-
+    # set button = class of button
+    # if not pressed:
+    #     if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
+    #         if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
+    #             if pygame.mouse.get_pressed()[0]:  
+                        #pressed = True
 while True:
 
     for event in pygame.event.get():
@@ -133,19 +145,8 @@ while True:
     #         typing = False
     #         tamo.name = name
 
-    if not pygame.mouse.get_pressed()[0]:
-        pressed = False
-
-    if not pressed:
-        if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
-            if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
-                if pygame.mouse.get_pressed()[0]:    
-                    tamo.feed(2)
-                    #print(round(tamo.Hunger,2),' ', round(tamo.weight,2))
-                    pressed = True
-
-    print(round(tamo.Hunger))
-    print('weight = ',round(tamo.weight))
+    pressed = isButtonpressed(button)
+    if 
 
     # print(tamo.Hunger)
 
