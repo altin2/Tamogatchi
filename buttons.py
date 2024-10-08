@@ -7,3 +7,6 @@ class test_button(pygame.sprite.Sprite):
         self.image = pygame.image.load('tamoImages\HungerBarMC.png')
         self.rect = self.image.get_rect()
         self.rect.center = [500,100]
+
+    def action(self, tamo):
+        tamo.feed(2)

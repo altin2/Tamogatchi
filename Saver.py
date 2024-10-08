@@ -195,39 +195,39 @@ class toddler(Tamo):
         self.state = 0
 
         if self.state == 0:
-            self.image = pygame.image.load('tamoToddler.png')
+            self.image = pygame.image.load('tamoImages\gotchiToddler.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
 
         elif self.state == 1:
-            self.image = pygame.image.load('toddlerPlayAnim1.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim1.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
 
         elif self.state == 2:
-            self.image = pygame.image.load('toddlerPlayAnim2.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim2.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
         
         elif self.state == 3:
-            self.image = pygame.image.load('toddlerPlayAnim3.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim3.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
         
         elif self.state == 4:
-            self.image = pygame.image.load('toddlerPlayAnim4.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim4.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
         
         elif self.state == 5:
-            self.image = pygame.image.load('toddlerPlayAnim5.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim5.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
         
         elif self.state == 6:
-            self.image = pygame.image.load('toddlerPlayAnim6.png')
+            self.image = pygame.image.load('tamoImages\gtPlayAnim6.png')
             self.rect = self.image.get_rect()
-            #self.rect.topleft = [x_pos,y_pos]
+            self.rect.center = [340,340]
 
     def setState(self, amt):
 

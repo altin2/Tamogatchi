@@ -92,14 +92,18 @@ print(tamo.name)
 tamo.away(Timedifference)
 
 #BELOW TO BE PUT IN MAIN WHILE LOOP
-def isButtonpressed(button,pressed):
+def isButtonpressed(button,pressed,tamo):
     if not pygame.mouse.get_pressed()[0]:
+        print('not pressed')
         return False
     if not pressed:
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:  
+                    print('pressed')
+                    button.action(tamo)
                     return True
+
 name = ''
 pressed = False
 
@@ -145,10 +149,14 @@ while True:
     #         typing = False
     #         tamo.name = name
 
-    pressed = isButtonpressed(button)
-    if 
+    print(isButtonpressed(button, pressed, tamo))
+    if isButtonpressed(button, pressed, tamo) != None:
+        pressed = isButtonpressed(button, pressed, tamo)
+    
 
-    # print(tamo.Hunger)
+    print('the pressed is ', pressed)
+
+    print(tamo.Hunger)
 
     # print(count)
     buttons.draw(screen)
