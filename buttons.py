@@ -9,4 +9,4 @@ class test_button(pygame.sprite.Sprite):
 
         self.image = pygame.image.load('tamoImages\eggStage1.png')
         self.rect = self.image.get_rect()
-        self.rect.center = [100,100]
+        self.rect.center = [340,340]

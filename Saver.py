@@ -186,7 +186,7 @@ class egg(Tamo):
     
 class toddler(Tamo):
 
-    def __init__(self):
+    def __init__(self, state = 0):
 
         Tamo.__init__(self)
         self.HP = 50
