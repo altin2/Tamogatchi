@@ -15,6 +15,7 @@ black = (0,0,0)
 screen = pygame.display.set_mode(res)
 font = pygame.font.Font('freesansbold.ttf', 32)
 clock = pygame.time.Clock()
+frame = int((1/60)*1000)
 
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 
@@ -147,16 +148,14 @@ while True:
             pygame.quit()
     screen.fill((255,255,255))      
 
-    print(0)
-
     #testing animations
 
-    test_tod = toddler()
-    tamogotchis.add(test_tod)
-    count += 1
+    # test_tod = toddler()
+    # tamogotchis.add(test_tod)
+    # count += 1
     
-    if count == 120:
-        toddlerPlay(test_tod, animIteration)
+    # if count == 120:
+    #     toddlerPlay(test_tod, animIteration)
 
     #general tamo updates
     
@@ -164,6 +163,9 @@ while True:
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
+
+    print(tamo.Hunger)
+    print(tamo.Thirst)
 
     Feedbutton = feedbutton()
     Drinkbutton = drinkbutton()
@@ -193,4 +195,4 @@ while True:
     tamogotchis.draw(screen)
     pygame.display.update()
 
-    dt = clock.tick(60) / 1000
+    pygame.time.wait(frame)

@@ -91,7 +91,7 @@ class Tamo:
                 self.weight -= (0.5/frameRate)
         
         elif self.Hunger > 0:
-            self.Hunger -= (0.5/frameRate)
+            self.Hunger -= (1/frameRate)
 
     def checkThirst(self, frameRate):
         
@@ -99,7 +99,7 @@ class Tamo:
             self.HP -= (1/frameRate)
         
         elif self.Thirst > 0 and self.Hunger >0:
-            self.Hunger -= (0.5/frameRate)
+            self.Thirst -= (0.5/frameRate)
 
     def checkHygiene(self, frameRate):
 
