@@ -139,6 +139,14 @@ animIteration = 0
                         #pressed = True
 count = 0
 
+#All buttons need ot be created outside of while loop otherwise it slows the program down
+
+Feedbutton = feedbutton()
+Drinkbutton = drinkbutton()
+
+buttons.add(Feedbutton)
+buttons.add(Drinkbutton)
+
 while True:
 
     for event in pygame.event.get():
@@ -167,17 +175,11 @@ while True:
     print(tamo.Hunger)
     print(tamo.Thirst)
 
-    Feedbutton = feedbutton()
-    Drinkbutton = drinkbutton()
-
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(120,100))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(120,150))
     WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(120,200))
     AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(120,250))
     HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(120,300))
-
-    buttons.add(Feedbutton)
-    buttons.add(Drinkbutton)
 
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
