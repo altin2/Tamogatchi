@@ -166,9 +166,10 @@ while True:
     count += 1
     
     if count >= 120:
-        toddlerPlay(test_tod, animIteration)
+        test_tod.state = toddlerPlay(test_tod, animIteration)
         animIteration += 1
 
+    print('state', test_tod.state)
     print(animIteration)
 
     #general tamo updates
