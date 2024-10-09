@@ -147,6 +147,9 @@ Drinkbutton = drinkbutton()
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 
+test_tod = toddler()
+tamogotchis.add(test_tod)
+
 while True:
 
     for event in pygame.event.get():
@@ -160,10 +163,13 @@ while True:
 
     # test_tod = toddler()
     # tamogotchis.add(test_tod)
-    # count += 1
+    count += 1
     
-    # if count == 120:
-    #     toddlerPlay(test_tod, animIteration)
+    if count >= 120:
+        toddlerPlay(test_tod, animIteration)
+        animIteration += 1
+
+    print(animIteration)
 
     #general tamo updates
     
@@ -171,9 +177,6 @@ while True:
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
-
-    print(tamo.Hunger)
-    print(tamo.Thirst)
 
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(120,100))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(120,150))
