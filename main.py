@@ -80,6 +80,23 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 
+# def displayAtts(tamo):
+#     font = pygame.font.SysFont('Arial', 25)
+#     attributes = tamo.getterAtt()
+#     health = font.render(tamo.HP)
+#     tamo.Hunger
+#     tamo.Happiness
+#     tamo.Thirst
+#     tamo.Age
+#     tamo.Intellegence
+#     tamo.Hygiene
+#     tamo.weight
+#     tamo.Strength
+#     tamo.LastOnline
+#     tamo.Action
+#     tamo.name
+
+
 # evolution = tamoEvolution(pointer, evolution)[1]
 # temp_pointer = tamoEvolution(pointer,evolution)[0]
 tamo = Tamo()
@@ -109,7 +126,8 @@ name = ''
 pressed = False
 
 buttons = pygame.sprite.Group()
-count = 0
+tamogotchis = pygame.sprite.Group()
+animIteration = 0
     # set button = class of button
     # if not pressed:
     #     if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
@@ -124,6 +142,15 @@ while True:
             saveattributes(tamo)
             pygame.quit()
     screen.fill((255,255,255))      
+
+    #testing animations
+
+    test_tod = toddler()
+    tamogotchis.add(test_tod)
+
+    temp = input()
+    if temp:
+        toddlerPlay(test_tod, animIteration)
 
     #general tamo updates
 

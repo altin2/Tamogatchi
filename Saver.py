@@ -150,7 +150,7 @@ class Tamo:
 class egg(Tamo):
 
     def __init__(self, state = 0):
-
+        pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.HP = 25
         self.Strength = 10
@@ -187,7 +187,7 @@ class egg(Tamo):
 class toddler(Tamo):
 
     def __init__(self, state = 0):
-
+        pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.HP = 50
         self.Strength = 25
@@ -259,9 +259,9 @@ class toddler(Tamo):
         self.Hunger -= 15
 
 class balanced1(Tamo):
-
+    
     def __init__(self,a,i,w,s):
-
+        pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.Age = a
         self.Intellegence = i
@@ -272,7 +272,7 @@ class strong1(Tamo):
     #uses hunger and thirst quicker but makes strength quicker
     
     def __init__(self,a,i,w,s):
-
+        pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.Age = a
         self.Intellegence = i
@@ -308,7 +308,7 @@ class intelligent1(Tamo):
     #uses hunger and thirst quicker but makes intellegence quicker
     
     def __init__(self,a,i,w,s):
-
+        pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.Age = a
         self.Intellegence = i

@@ -30,3 +30,4 @@ def toddlerPlay(tamo, iter):
         tamo.state = 2
     elif iter < 66:
         tamo.state = 1
+        return True
