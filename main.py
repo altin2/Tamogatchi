@@ -137,6 +137,7 @@ animIteration = 0
     #             if pygame.mouse.get_pressed()[0]:  
                         #pressed = True
 count = 0
+
 while True:
 
     for event in pygame.event.get():
@@ -146,13 +147,15 @@ while True:
             pygame.quit()
     screen.fill((255,255,255))      
 
+    print(0)
+
     #testing animations
 
     test_tod = toddler()
     tamogotchis.add(test_tod)
-
-    temp = input()
-    if temp:
+    count += 1
+    
+    if count == 120:
         toddlerPlay(test_tod, animIteration)
 
     #general tamo updates
@@ -164,13 +167,16 @@ while True:
 
     Feedbutton = feedbutton()
     Drinkbutton = drinkbutton()
+
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(120,100))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(120,150))
     WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(120,200))
     AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(120,250))
     HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(120,300))
+
     buttons.add(Feedbutton)
     buttons.add(Drinkbutton)
+
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
     screen.blit(ThirstText.Text,ThirstText.rect)
@@ -182,7 +188,9 @@ while True:
     isButtonPressed(Drinkbutton)
 
     # print(count)
+    
     buttons.draw(screen)
+    tamogotchis.draw(screen)
     pygame.display.update()
 
     dt = clock.tick(60) / 1000
