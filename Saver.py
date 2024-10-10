@@ -159,20 +159,25 @@ class egg(Tamo):
         self.HP = 25
         self.Strength = 10
         self.Temp = 50
-        
-        if state == 0:
+        self.state = state
+        self.image = pygame.image.load('tamoImages\eggStage1.png')
+        self.rect = self.image.get_rect()
+        self.rect.center = [310,310]
+    
+    def updateState(self):
+        if self.Age < 2:
             self.image = pygame.image.load('tamoImages\eggStage1.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
-        elif state == 1:
+        elif self.Age < 3:
             self.image = pygame.image.load('tamoImages\eggStage2.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
-        elif state == 2:
+        elif self.Age < 4:
             self.image = pygame.image.load('tamoImages\eggStage3.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
-        elif state == 3:
+        elif self.Age < 5:
             self.image = pygame.image.load('tamoImages\eggStage4.png')
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
