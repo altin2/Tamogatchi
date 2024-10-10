@@ -69,9 +69,8 @@ def assignattributes():
 def saveattributes(tamogat, evo):
     List1 = []
     f = open('Save.txt',"w")
-    for i in range(12):
+    for i in range(13):
         List1.append(tamogat.getterAtt()[i])
-    List1.append(tamo.temp)
     List1.append(evo[0])
     f.write(str(List1))
 def loadattributes():
