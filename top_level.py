@@ -24,7 +24,7 @@ global f #this is our save file. we need to make this global becuase we use it i
 f = open('Save.txt','r+')
 
 # pointer = egg()
-# evolution = 0
+evolution = 0
 
 tamo = Tamo()
 
@@ -61,14 +61,14 @@ def assignattributes():
     tamo.LastOnline = attributes[9]
     tamo.Action = attributes[10]
     tamo.name = attributes[11]
-def saveattributes(tamogat):
+def saveattributes(tamogat, evo):
     List1 = []
     f = open('Save.txt',"w")
     for i in range(12):
         List1.append(tamogat.getterAtt()[i])
-    if tamo.checkEvolve[0] == 'child':
+    if evo[0] == 'child':
         List1.append(tamo.temp)
-    List1.append(tamo.checkEvolve[0])
+    List1.append(evo[0])
     f.write(str(List1))
 def loadattributes():
     f = open('Save.txt',"r")
@@ -183,10 +183,13 @@ tamogotchis.add(test_tod)
 
 while True:
 
+    currentEvo = tamo.checkEvolve(evolution)
+    print(currentEvo)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
-            saveattributes(tamo)
+            saveattributes(tamo, currentEvo)
             pygame.quit()
     screen.fill((255,255,255))      
 
@@ -201,9 +204,10 @@ while True:
 
     #general tamo updates
 
-    tamo.updateState()
+    if currentEvo[0] == 'toddler':
+        tamo.updateState()
     
-    if tamo.checkEvolve[0] == 'child':
+    if currentEvo[0] == 'toddler':
         tamo.checkTemp
 
     tamo.checkHunger(60)

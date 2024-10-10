@@ -118,7 +118,7 @@ class Tamo(pygame.sprite.Sprite):
     def checkEvolve(self, evolution):
 
         if self.Age < 5:
-            return 'egg', evolution
+            return ('egg', evolution)
 
         elif (self.Age >= 5) and (self.Age < 10):
             if evolution == 0:
@@ -127,7 +127,7 @@ class Tamo(pygame.sprite.Sprite):
             else:
                 check_evo = evolution
 
-            return 'child', check_evo
+            return ('toddler', check_evo)
         
         elif (self.Age >= 10) and (self.Age < 50):
             
@@ -138,16 +138,16 @@ class Tamo(pygame.sprite.Sprite):
             
             if evolution != check_evo:
                 if (self.Intellegence >= 80) and not(self.Strength > 60):
-                    return 'intelligent',check_evo
+                    return ('intelligent',check_evo)
                     
                 elif (self.Strength >= 80) and not(self.Intellegence > 60):
-                    return 'strong',check_evo
+                    return ('strong',check_evo)
                     
                 else:
-                    return 'balanced',check_evo
+                    return ('balanced',check_evo)
                 
             else:
-                return 'same',evolution
+                return ('same',evolution)
         
         #keep adding onto this
 
@@ -219,7 +219,7 @@ class toddler(Tamo):
         self.image = None
         self.rect = None
 
-        self.state = 0
+        self.state = state
 
     def updateState(self):
         if self.state == 0:
@@ -299,13 +299,60 @@ class balanced1(Tamo):
 class strong1(Tamo):
     #uses hunger and thirst quicker but makes strength quicker
     
-    def __init__(self,a,i,w,s):
+    def __init__(self,a,i,w,s,state = 0):
         pygame.sprite.Sprite.__init__(self)
         Tamo.__init__(self)
         self.Age = a
         self.Intellegence = i
         self.Weight = w
         self.Strength = s
+        self.state = state
+
+    def updateState(self):
+        if self.state == 0:
+            self.image = pygame.image.load('tamoImages\gotchiStrong.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+
+        elif self.state == 1:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim1.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+
+        elif self.state == 2:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim2.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 3:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim3.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 4:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim4.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 5:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim5.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 6:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim6.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 6:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim7.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
+        
+        elif self.state == 6:
+            self.image = pygame.image.load('tamoImages\gsPlayAnim8.png')
+            self.rect = self.image.get_rect()
+            self.rect.center = [340,360]
 
     def checkHunger(self, frameRate):
 
