@@ -26,8 +26,29 @@ f = open('Save.txt','r+')
 # pointer = egg()
 # evolution = 0
 
+tamo = Tamo()
+
 def assignattributes():
     attributes = loadattributes() #this is a list
+    currentType = None
+    
+    #BELOW CODE TO DEFINE WHICH EVOLUTION TAMO IS ON STARTUP
+    # try:
+    #     currentType = attributes[13]
+    # except:
+    #     currentType = attributes[12]
+    
+    # if currentType == 'child':
+    #     tamo = toddler()
+    # elif currentType == 'balanced':
+    #     tamo = balanced1()
+    # elif currentType == 'intelligent':
+    #     tamo = intelligent1()
+    # elif currentType == 'strong':
+    #     tamo = strong1()
+    # else:
+    #     tamo = egg()
+
     tamo.HP = attributes[0] # assings the loaded values to the tamogatchi
     tamo.Hunger = attributes[1]
     tamo.Happiness =attributes[2]
@@ -45,6 +66,9 @@ def saveattributes(tamogat):
     f = open('Save.txt',"w")
     for i in range(12):
         List1.append(tamogat.getterAtt()[i])
+    if tamo.checkEvolve[0] == 'child':
+        List1.append(tamo.temp)
+    List1.append(tamo.checkEvolve[0])
     f.write(str(List1))
 def loadattributes():
     f = open('Save.txt',"r")
@@ -101,7 +125,7 @@ def tamoEvolution(tamo, evolution):
 
 # evolution = tamoEvolution(pointer, evolution)[1]
 # temp_pointer = tamoEvolution(pointer,evolution)[0]
-tamo = Tamo()
+
 # tamo = temp_pointer
 
 assignattributes()
@@ -142,7 +166,7 @@ animIteration = 0
     #         if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
     #             if pygame.mouse.get_pressed()[0]:  
                         #pressed = True
-count = 0
+
 
 #All buttons need ot be created outside of while loop otherwise it slows the program down
 
@@ -170,21 +194,24 @@ while True:
 
     # test_tod = toddler()
     # tamogotchis.add(test_tod)
-    count += 1
     
 
-    print('state', test_tod.state)
-    print(animIteration)
+    # print('state', test_tod.state)
+    # print(animIteration)
 
     #general tamo updates
 
-    test_tod.updateState()
+    tamo.updateState()
     
+    if tamo.checkEvolve[0] == 'child':
+        tamo.checkTemp
+
     tamo.checkHunger(60)
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
     #tamo.checkEvolve
+
 
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(100,50))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(100,80))
