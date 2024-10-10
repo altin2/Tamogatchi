@@ -18,6 +18,7 @@ class Tamo(pygame.sprite.Sprite):
         self.Strength = 50
         self.LastOnline = 0
         self.Action = False
+        self.Temp = 50
 
     def carryOver(self):
 
