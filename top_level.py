@@ -180,6 +180,8 @@ buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 buttons.add(Excerbutton)
 
+tamogotchis.add(tamo)
+
 # test_tod = toddler()
 # tamogotchis.add(test_tod)
 
@@ -199,7 +201,6 @@ while True:
     #testing animations
 
     # test_tod = toddler()
-    # tamogotchis.add(test_tod)
     
 
     # print('state', test_tod.state)
