@@ -23,10 +23,12 @@ OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
 global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
 
-# pointer = egg()
+pointer = egg()
 evolution = 0
 
-tamo = egg()
+tamo = pointer
+
+#tamo = egg()
 
 def assignattributes():
     attributes = loadattributes() #this is a list
@@ -66,7 +68,7 @@ def saveattributes(tamogat, evo):
     f = open('Save.txt',"w")
     for i in range(12):
         List1.append(tamogat.getterAtt()[i])
-    if evo[0] == 'child':
+    if evo[0] == 'egg':
         List1.append(tamo.temp)
     List1.append(evo[0])
     f.write(str(List1))
@@ -126,11 +128,10 @@ def forceEvolve(tamo, amt):
 #     tamo.Action
 #     tamo.name
 
+evolution = tamoEvolution(pointer, evolution)[1]
+temp_pointer = tamoEvolution(pointer,evolution)[0]
 
-# evolution = tamoEvolution(pointer, evolution)[1]
-# temp_pointer = tamoEvolution(pointer,evolution)[0]
-
-# tamo = temp_pointer
+tamo = temp_pointer
 
 assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)

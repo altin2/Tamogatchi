@@ -1,6 +1,10 @@
 import pygame
 from Saver import *
 
+pygame.init()
+screen = pygame.display.set_mode([600,600])
+frame = int((1/60)*1000)
+
 # def toddlerPlay(tamo, iter):
 
 #     #needs to have a variable for each iterationnin main while loop
@@ -89,3 +93,40 @@ def strongLift(tamo, iter):
         return 8
     elif iter < 54:
         return 1
+
+animIteration = 0
+iteration = True
+
+tod = toddler()
+strong = strong1(10)
+tod.updateState
+strong.updateState
+
+anims = pygame.sprite.Group()
+
+anims.add(tod)
+anims.add(strong)
+
+while __name__ == '__main__':
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: 
+            pygame.quit()
+    screen.fill((255,255,255))
+
+    animIteration += 1
+    if animIteration >=66:
+        animIteration = 0
+        iteration = not iteration
+
+    if iteration:
+        tod.updateState
+    
+    if not iteration:
+        strong.updateState
+    
+    anims.draw(screen)
+
+    pygame.display.update()
+    pygame.time.wait(frame)
+    
