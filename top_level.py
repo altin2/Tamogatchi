@@ -180,6 +180,7 @@ Washbutton = WashButton()
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 buttons.add(Excerbutton)
+buttons.add(Washbutton)
 
 tamogotchis.add(tamo)
 
@@ -242,6 +243,7 @@ while True:
     isButtonPressed(Feedbutton, False, None)
     isButtonPressed(Drinkbutton, False, None)
     isButtonPressed(Excerbutton, True, animIteration)
+    isButtonPressed(Washbutton, False, None)
     #if isButtonPressed(Excerbutton, True, animIteration):
     #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1

@@ -32,7 +32,7 @@ class WashButton(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('tamoImages\WashingButton.png')
         self.rect = self.image.get_rect()
-        self.rect.center = [450,150]
+        self.rect.center = [450,200]
 
     def action(self, tamo,iter):
         tamo.clean(5)

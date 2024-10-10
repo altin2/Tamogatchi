@@ -61,7 +61,11 @@ class Tamo(pygame.sprite.Sprite):
 
     def clean(self, amt):
         if not self.Action:
-            self.Hygiene += amt
+            if self.Hygiene < 100:
+                self.Hygiene += amt
+            if self.Hygiene >= 100:
+                self.Hygiene = 100
+
         return self.Hygiene
     
     def grow(self, amt):
@@ -105,6 +109,8 @@ class Tamo(pygame.sprite.Sprite):
 
         if self.Hygiene <= 5:
             self.HP -= (0.5/frameRate)
+        else:
+            self.Hygiene -= (0.2/frameRate)
 
     def checkAge(self,frameRate, multiplyer = 1):
 
