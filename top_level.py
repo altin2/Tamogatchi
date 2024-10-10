@@ -63,14 +63,14 @@ def assignattributes():
     tamo.LastOnline = attributes[9]
     tamo.Action = attributes[10]
     tamo.name = attributes[11]
+    tamo.Temp = attributes[12]
 
 def saveattributes(tamogat, evo):
     List1 = []
     f = open('Save.txt',"w")
     for i in range(12):
         List1.append(tamogat.getterAtt()[i])
-    if evo[0] == 'egg':
-        List1.append(tamo.temp)
+    List1.append(tamo.temp)
     List1.append(evo[0])
     f.write(str(List1))
 def loadattributes():
