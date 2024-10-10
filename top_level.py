@@ -33,6 +33,7 @@ tamo = pointer
 def assignattributes():
     attributes = loadattributes() #this is a list
     currentType = None
+    print(attributes)
     
     #BELOW CODE TO DEFINE WHICH EVOLUTION TAMO IS ON STARTUP
     # try:
@@ -217,7 +218,7 @@ while True:
         print('hi')
     
     if currentEvo[0] == 'egg':
-        tamo.checkTemp
+        tamo.checkTemp(60)
 
     tamo.checkHunger(60)
     tamo.checkThirst(60)
