@@ -106,6 +106,10 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 
+def forceEvo(tamo, amt):
+
+    tamo.age += amt
+
 # def displayAtts(tamo):
 #     font = pygame.font.SysFont('Arial', 25)
 #     attributes = tamo.getterAtt()
