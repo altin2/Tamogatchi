@@ -157,10 +157,8 @@ def isButtonPressed(button, isAnim, iter = None):
                     else:
                         button.action(tamo, iter = None)
                         pressed = True
-
 name = ''
 pressed = False
-
 buttons = pygame.sprite.Group()
 tamogotchis = pygame.sprite.Group()
 animIteration = 0

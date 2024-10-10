@@ -159,7 +159,7 @@ class egg(Tamo):
         self.HP = 25
         self.Strength = 10
         self.Temp = 50
-
+        
         if state == 0:
             self.image = pygame.image.load('tamoImages\eggStage1.png')
             self.rect = self.image.get_rect()
