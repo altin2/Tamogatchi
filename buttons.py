@@ -26,6 +26,7 @@ class drinkbutton(pygame.sprite.Sprite):
         tamo.drink(5)
         print(tamo.Thirst)
         iter = None
+
 class WashButton(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -49,7 +50,6 @@ class excerciseButton(pygame.sprite.Sprite):
 
     def action(self,tamo, iter):
         tamo.state = toddlerPlay(tamo, iter)
-
 
 class ScreenText(pygame.sprite.Sprite):
     def __init__(self,Text, center):

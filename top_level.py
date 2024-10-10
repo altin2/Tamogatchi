@@ -61,13 +61,14 @@ def assignattributes():
     tamo.LastOnline = attributes[9]
     tamo.Action = attributes[10]
     tamo.name = attributes[11]
+
 def saveattributes(tamogat, evo):
     List1 = []
     f = open('Save.txt',"w")
     for i in range(12):
-        List1.append(tamogat.getterAtt()[i])
+        List1.append(tamogat.getterAtt()[i]) # makes a new list to turn the old txt file into the new list
     if evo[0] == 'child':
-        List1.append(tamo.temp)
+        List1.append(tamo.temp) 
     List1.append(evo[0])
     f.write(str(List1))
 def loadattributes():
@@ -230,7 +231,12 @@ while True:
     AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(100,140))
     HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(100,170))
     HygText = ScreenText(font.render(f'Hygiene {round(tamo.Hygiene,2)}', True, black),(100,200))
-
+    IntText = ScreenText(font.render(f'Intelligence {round(tamo.Intellegence,2)}', True, black),(100,230))
+    StrText = ScreenText(font.render(f'Strength {round(tamo.Strength,2)}', True, black),(100,260))
+    HappText = ScreenText(font.render(f'Happiness {round(tamo.Happiness,2)}', True, black),(100,290))
+    if currentEvo[0] == 'egg':
+        TempText = ScreenText(font.render(f'Temperature {round(tamo.Temp,2)}', True, black),(100,320))
+        screen.blit(TempText.Text,TempText.rect)
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
     screen.blit(ThirstText.Text,ThirstText.rect)
@@ -238,6 +244,9 @@ while True:
     screen.blit(AgeText.Text,AgeText.rect)
     screen.blit(HPText.Text,HPText.rect)
     screen.blit(HygText.Text,HygText.rect)
+    screen.blit(IntText.Text,IntText.rect)
+    screen.blit(HappText.Text,HappText.rect)
+    screen.blit(StrText.Text,StrText.rect)
 
     #Showing buttons
     isButtonPressed(Feedbutton, False, None)
