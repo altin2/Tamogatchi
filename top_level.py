@@ -122,15 +122,13 @@ def isButtonPressed(button, isAnim, iter = None):
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:  
-                    if isAnim:    
+                    if isAnim:  
                         button.action(tamo, iter)
                         pressed = True
                         return True
                     else:
-                        button.action(tamo, iter)
+                        button.action(tamo, iter = None)
                         pressed = True
-                    button.action(tamo)
-                    pressed = True
 
 name = ''
 pressed = False
@@ -174,9 +172,6 @@ while True:
     # tamogotchis.add(test_tod)
     count += 1
     
-    if count >= 120:
-        test_tod.state = toddlerPlay(test_tod, animIteration)
-        animIteration += 1
 
     print('state', test_tod.state)
     print(animIteration)
@@ -206,17 +201,21 @@ while True:
 
 
     #Showing buttons
-    isButtonPressed(Feedbutton, False)
-    isButtonPressed(Drinkbutton, False)
+    isButtonPressed(Feedbutton, False, None)
+    isButtonPressed(Drinkbutton, False, None)
+    isButtonPressed(Excerbutton, True, animIteration)
+    #if isButtonPressed(Excerbutton, True, animIteration):
+    test_tod.state = toddlerPlay(test_tod, animIteration)
+    animIteration += 1
+    if animIteration >=66:
+        animIteration = 0
+    # if tamo.checkEvolve == 'child':
+    #     isButtonPressed(Excerbutton, True, animIteration)
 
-    if tamo.checkEvolve == 'child':
-        isButtonPressed(Excerbutton, True, animIteration)
+    #     if isButtonPressed(Excerbutton, True, animIteration):
+    #         animIteration += 1
+    #         tamo.updateState()
 
-        if isButtonPressed(Excerbutton, True, animIteration):
-            animIteration += 1
-            tamo.updateState()
-    else:
-        isButtonPressed(Excerbutton, False)
     
     buttons.draw(screen)
     tamogotchis.draw(screen)

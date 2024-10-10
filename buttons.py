@@ -9,9 +9,10 @@ class feedbutton(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [600,75]
 
-    def action(self, tamo):
+    def action(self, tamo,iter):
         tamo.feed(5)
         print(tamo.Hunger, ' ', tamo.weight)
+        iter = None
 
 class drinkbutton(pygame.sprite.Sprite):
 
@@ -21,9 +22,10 @@ class drinkbutton(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [450,75]
 
-    def action(self, tamo):
+    def action(self, tamo,iter):
         tamo.drink(5)
         print(tamo.Thirst)
+        iter = None
 
 class excerciseButton(pygame.sprite.Sprite):
 
