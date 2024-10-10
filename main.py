@@ -129,6 +129,8 @@ def isButtonPressed(button, isAnim, iter = None):
                     else:
                         button.action(tamo, iter)
                         pressed = True
+                    button.action(tamo)
+                    pressed = True
 
 name = ''
 pressed = False
@@ -142,6 +144,7 @@ animIteration = 0
     #         if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
     #             if pygame.mouse.get_pressed()[0]:  
                         #pressed = True
+count = 0
 
 #All buttons need ot be created outside of while loop otherwise it slows the program down
 
@@ -165,6 +168,18 @@ while True:
             pygame.quit()
     screen.fill((255,255,255))      
 
+    #testing animations
+
+    # test_tod = toddler()
+    # tamogotchis.add(test_tod)
+    count += 1
+    
+    if count >= 120:
+        test_tod.state = toddlerPlay(test_tod, animIteration)
+        animIteration += 1
+
+    print('state', test_tod.state)
+    print(animIteration)
 
     #general tamo updates
 
