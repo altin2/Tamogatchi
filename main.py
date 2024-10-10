@@ -113,7 +113,7 @@ tamo.away(Timedifference)
 pressed = False
 #BELOW TO BE PUT IN MAIN WHILE LOOP
 name = ''
-def isButtonPressed(button):
+def isButtonPressed(button, isAnim, iter = None):
     global pressed
     if not pygame.mouse.get_pressed()[0]:
         pressed = False
@@ -122,8 +122,13 @@ def isButtonPressed(button):
         if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
             if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
                 if pygame.mouse.get_pressed()[0]:  
-                    button.action(tamo)
-                    pressed = True
+                    if isAnim:    
+                        button.action(tamo, iter)
+                        pressed = True
+                        return True
+                    else:
+                        button.action(tamo, iter)
+                        pressed = True
 
 name = ''
 pressed = False
@@ -137,15 +142,16 @@ animIteration = 0
     #         if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
     #             if pygame.mouse.get_pressed()[0]:  
                         #pressed = True
-count = 0
 
 #All buttons need ot be created outside of while loop otherwise it slows the program down
 
 Feedbutton = feedbutton()
 Drinkbutton = drinkbutton()
+Excerbutton = excerciseButton()
 
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
+buttons.add(Excerbutton)
 
 test_tod = toddler()
 tamogotchis.add(test_tod)
@@ -159,18 +165,6 @@ while True:
             pygame.quit()
     screen.fill((255,255,255))      
 
-    #testing animations
-
-    # test_tod = toddler()
-    # tamogotchis.add(test_tod)
-    count += 1
-    
-    if count >= 120:
-        test_tod.state = toddlerPlay(test_tod, animIteration)
-        animIteration += 1
-
-    print('state', test_tod.state)
-    print(animIteration)
 
     #general tamo updates
 
@@ -180,6 +174,7 @@ while True:
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
+    #tamo.checkEvolve
 
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(100,50))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(100,80))
@@ -193,11 +188,20 @@ while True:
     screen.blit(WeightText.Text,WeightText.rect)
     screen.blit(AgeText.Text,AgeText.rect)
     screen.blit(HPText.Text,HPText.rect)
-    #Showing buttons
-    isButtonPressed(Feedbutton)
-    isButtonPressed(Drinkbutton)
 
-    # print(count)
+
+    #Showing buttons
+    isButtonPressed(Feedbutton, False)
+    isButtonPressed(Drinkbutton, False)
+
+    if tamo.checkEvolve == 'child':
+        isButtonPressed(Excerbutton, True, animIteration)
+
+        if isButtonPressed(Excerbutton, True, animIteration):
+            animIteration += 1
+            tamo.updateState()
+    else:
+        isButtonPressed(Excerbutton, False)
     
     buttons.draw(screen)
     tamogotchis.draw(screen)
