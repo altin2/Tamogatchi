@@ -1,6 +1,6 @@
 import pygame
 import os
-
+#hi 
 class Tamo(pygame.sprite.Sprite):
     def __init__(self):
 
