@@ -63,6 +63,7 @@ def assignattributes():
     tamo.LastOnline = attributes[9]
     tamo.Action = attributes[10]
     tamo.name = attributes[11]
+
 def saveattributes(tamogat, evo):
     List1 = []
     f = open('Save.txt',"w")
@@ -176,10 +177,12 @@ animIteration = 0
 Feedbutton = feedbutton()
 Drinkbutton = drinkbutton()
 Excerbutton = excerciseButton()
+Washbutton = WashButton()
 
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 buttons.add(Excerbutton)
+buttons.add(Washbutton)
 
 tamogotchis.add(tamo)
 
@@ -228,19 +231,29 @@ while True:
     WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(100,110))
     AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(100,140))
     HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(100,170))
-
+    HygText = ScreenText(font.render(f'Hygiene {round(tamo.Hygiene,2)}', True, black),(100,200))
+    IntText = ScreenText(font.render(f'Intelligence {round(tamo.Intellegence,2)}', True, black),(100,230))
+    StrText = ScreenText(font.render(f'Strength {round(tamo.Strength,2)}', True, black),(100,260))
+    HappText = ScreenText(font.render(f'Happiness {round(tamo.Happiness,2)}', True, black),(100,290))
+    if currentEvo[0] == 'egg':
+        TempText = ScreenText(font.render(f'Temperature {round(tamo.Temp,2)}', True, black),(100,320))
+        screen.blit(TempText.Text,TempText.rect)
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
     screen.blit(ThirstText.Text,ThirstText.rect)
     screen.blit(WeightText.Text,WeightText.rect)
     screen.blit(AgeText.Text,AgeText.rect)
     screen.blit(HPText.Text,HPText.rect)
-
+    screen.blit(HygText.Text,HygText.rect)
+    screen.blit(IntText.Text,IntText.rect)
+    screen.blit(HappText.Text,HappText.rect)
+    screen.blit(StrText.Text,StrText.rect)
 
     #Showing buttons
     isButtonPressed(Feedbutton, False, None)
     isButtonPressed(Drinkbutton, False, None)
     isButtonPressed(Excerbutton, True, animIteration)
+    isButtonPressed(Washbutton, False, None)
     #if isButtonPressed(Excerbutton, True, animIteration):
     #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1

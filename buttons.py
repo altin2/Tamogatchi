@@ -27,6 +27,19 @@ class drinkbutton(pygame.sprite.Sprite):
         print(tamo.Thirst)
         iter = None
 
+class WashButton(pygame.sprite.Sprite):
+
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('tamoImages\WashingButton.png')
+        self.rect = self.image.get_rect()
+        self.rect.center = [450,200]
+
+    def action(self, tamo,iter):
+        tamo.clean(5)
+        print(tamo.Hygiene)
+        iter = None
+
 class excerciseButton(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -37,7 +50,6 @@ class excerciseButton(pygame.sprite.Sprite):
 
     def action(self,tamo, iter):
         tamo.state = toddlerPlay(tamo, iter)
-
 
 class ScreenText(pygame.sprite.Sprite):
     def __init__(self,Text, center):
