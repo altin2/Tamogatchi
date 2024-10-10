@@ -208,10 +208,11 @@ while True:
 
     #general tamo updates
 
-    if currentEvo[0] == 'toddler':
+    if currentEvo[0] == 'toddler' or currentEvo[0] == 'egg':
         tamo.updateState()
+        print('hi')
     
-    if currentEvo[0] == 'toddler':
+    if currentEvo[0] == 'egg':
         tamo.checkTemp
 
     tamo.checkHunger(60)
