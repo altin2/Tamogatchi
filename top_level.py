@@ -175,6 +175,7 @@ animIteration = 0
 Feedbutton = feedbutton()
 Drinkbutton = drinkbutton()
 Excerbutton = excerciseButton()
+Washbutton = WashButton()
 
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
@@ -226,6 +227,7 @@ while True:
     WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(100,110))
     AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(100,140))
     HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(100,170))
+    HygText = ScreenText(font.render(f'Hygiene {round(tamo.Hygiene,2)}', True, black),(100,170))
 
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
@@ -233,7 +235,7 @@ while True:
     screen.blit(WeightText.Text,WeightText.rect)
     screen.blit(AgeText.Text,AgeText.rect)
     screen.blit(HPText.Text,HPText.rect)
-
+    screen.blit(HygText.Text,HygText.rect)
 
     #Showing buttons
     isButtonPressed(Feedbutton, False, None)
