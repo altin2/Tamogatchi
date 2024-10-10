@@ -158,6 +158,7 @@ class egg(Tamo):
         Tamo.__init__(self)
         self.HP = 25
         self.Strength = 10
+        self.Temp = 50
 
         if state == 0:
             self.image = pygame.image.load('tamoImages\eggStage1.png')
@@ -188,6 +189,26 @@ class egg(Tamo):
         
         return 'too young'
     
+    def heat(self):
+
+        self.Temp += 20
+
+    def checkHunger(self, frameRate):
+
+        return 'too young'
+
+    def checkThirst(self, frameRate):
+        
+        return 'too young'
+    
+    def checkTemp(self, frameRate):
+
+        if self.Temp <= 0 or self.Temp >= 100:
+            self.HP -= (2/frameRate)
+        
+        else:
+            self.Temp -= (1/frameRate)
+  
 class toddler(Tamo):
 
     def __init__(self, state = 0):
