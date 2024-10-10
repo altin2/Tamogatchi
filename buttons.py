@@ -45,3 +45,16 @@ class ScreenText(pygame.sprite.Sprite):
         self.Text = Text
         self.center = center
         self.rect = self.Text.get_rect(center = self.center)
+
+class forceEvo(pygame.sprite.Sprite):
+
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('tamoImages\evoButton.png')
+        self.rect = self.image.get_rect()
+        self.rect.center = [600,600]
+
+    def action(self, tamo,iter):
+        tamo.drink(5)
+        print(tamo.Thirst)
+        iter = None
