@@ -199,6 +199,7 @@ while True:
         if event.type == pygame.QUIT: 
             tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
             saveattributes(tamo, currentEvo)
+            f.close()
             pygame.quit()
     screen.fill((255,255,255))      
 
