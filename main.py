@@ -13,7 +13,7 @@ res = (680,680)
 black = (0,0,0)
 # opens up a window
 screen = pygame.display.set_mode(res)
-font = pygame.font.Font('freesansbold.ttf', 32)
+font = pygame.font.Font('freesansbold.ttf', 25)
 clock = pygame.time.Clock()
 frame = int((1/60)*1000)
 
@@ -173,17 +173,19 @@ while True:
     print(animIteration)
 
     #general tamo updates
+
+    test_tod.updateState()
     
     tamo.checkHunger(60)
     tamo.checkThirst(60)
     tamo.checkHygiene(60)
     tamo.checkAge(60)
 
-    HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(120,100))
-    ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(120,150))
-    WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(120,200))
-    AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(120,250))
-    HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(120,300))
+    HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(100,50))
+    ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(100,80))
+    WeightText = ScreenText(font.render(f'Weight {round(tamo.weight,2)}', True, black),(100,110))
+    AgeText = ScreenText(font.render(f'Age {round(tamo.Age,2)}', True, black),(100,140))
+    HPText = ScreenText(font.render(f'HP {round(tamo.HP,2)}', True, black),(100,170))
 
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)

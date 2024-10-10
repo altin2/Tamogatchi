@@ -195,43 +195,46 @@ class toddler(Tamo):
         Tamo.__init__(self)
         self.HP = 50
         self.Strength = 25
-        
+        self.image = None
+        self.rect = None
+
         self.state = 0
 
+    def updateState(self):
         if self.state == 0:
             self.image = pygame.image.load('tamoImages\gotchiToddler.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
 
         elif self.state == 1:
             self.image = pygame.image.load('tamoImages\gtPlayAnim1.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
 
         elif self.state == 2:
             self.image = pygame.image.load('tamoImages\gtPlayAnim2.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
         
         elif self.state == 3:
             self.image = pygame.image.load('tamoImages\gtPlayAnim3.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
         
         elif self.state == 4:
             self.image = pygame.image.load('tamoImages\gtPlayAnim4.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
         
         elif self.state == 5:
             self.image = pygame.image.load('tamoImages\gtPlayAnim5.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
         
         elif self.state == 6:
             self.image = pygame.image.load('tamoImages\gtPlayAnim6.png')
             self.rect = self.image.get_rect()
-            self.rect.center = [340,340]
+            self.rect.center = [340,360]
 
     def setState(self, amt):
 
