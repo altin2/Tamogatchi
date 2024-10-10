@@ -177,7 +177,7 @@ class egg(Tamo):
             self.rect = self.image.get_rect()
             self.rect.center = [310,310]
 
-    def feed(self):
+    def feed(self,amt):
 
         return 'too young'
     

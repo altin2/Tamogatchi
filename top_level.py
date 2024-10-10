@@ -26,7 +26,7 @@ f = open('Save.txt','r+')
 # pointer = egg()
 evolution = 0
 
-tamo = Tamo()
+tamo = egg()
 
 def assignattributes():
     attributes = loadattributes() #this is a list
@@ -106,7 +106,7 @@ def tamoEvolution(tamo, evolution):
         currentEvo = balanced1(age, intel, weight, strength)
         return currentEvo, evolution
 
-def forceEvo(tamo, amt):
+def forceEvolve(tamo, amt):
 
     tamo.age += amt
 
@@ -182,12 +182,13 @@ buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 buttons.add(Excerbutton)
 
-test_tod = toddler()
-tamogotchis.add(test_tod)
+# test_tod = toddler()
+# tamogotchis.add(test_tod)
 
 while True:
 
     currentEvo = tamo.checkEvolve(evolution)
+    print(evolution)
     print(currentEvo)
 
     for event in pygame.event.get():
@@ -240,7 +241,7 @@ while True:
     isButtonPressed(Drinkbutton, False, None)
     isButtonPressed(Excerbutton, True, animIteration)
     #if isButtonPressed(Excerbutton, True, animIteration):
-    test_tod.state = toddlerPlay(test_tod, animIteration)
+    #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1
     if animIteration >=66:
         animIteration = 0
