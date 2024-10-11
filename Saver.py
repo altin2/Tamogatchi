@@ -19,6 +19,24 @@ class Tamo(pygame.sprite.Sprite):
         self.LastOnline = 0
         self.Action = False
         self.Temp = 50
+    def checkdeath(self):
+        if self.HP <= 0:
+            print("TAMO IS DEAD")
+            return True
+    def resetstats(self):
+        self.name = None
+        self.HP = 100
+        self.Hunger = 100
+        self.Happiness = 100
+        self.Thirst = 100
+        self.Age = 0
+        self.Intellegence = 50
+        self.Hygiene = 100
+        self.weight = 10
+        self.Strength = 50
+        self.LastOnline = 0
+        self.Action = False
+        self.Temp = 50
 
     def carryOver(self):
 

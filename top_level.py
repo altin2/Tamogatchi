@@ -35,23 +35,6 @@ def assignattributes():
     attributes = loadattributes() #this is a list
     currentType = None
     print(attributes)
-    
-    #BELOW CODE TO DEFINE WHICH EVOLUTION TAMO IS ON STARTUP
-    # try:
-    #     currentType = attributes[13]
-    # except:
-    #     currentType = attributes[12]
-    
-    # if currentType == 'child':
-    #     tamo = toddler()
-    # elif currentType == 'balanced':
-    #     tamo = balanced1()
-    # elif currentType == 'intelligent':
-    #     tamo = intelligent1()
-    # elif currentType == 'strong':
-    #     tamo = strong1()
-    # else:
-    #     tamo = egg()
 
     tamo.HP = attributes[0] # assings the loaded values to the tamogatchi
     tamo.Hunger = attributes[1]
@@ -224,9 +207,14 @@ while True:
     currentEvo = tamo.checkEvolve(evolution)
     #print(evolution)
     print(currentEvo)
-
+    if tamo.checkdeath()  == True:
+        print("Your tamo is dead.")
+        tamo.resetstats()
+        saveattributes(tamo,'egg')
+        f.close()
+        pygame.quit()
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: 
+        if event.type == pygame.QUIT:
             tamo.LastOnline = round(datetime.timestamp(datetime.now())/3600,2) # we need to change this right before the program closes.
             saveattributes(tamo, currentEvo)
             f.close()
