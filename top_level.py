@@ -235,7 +235,8 @@ while True:
     print('i linke ', tamoEvolution(tamo,evolution)[0])
 
     evolution = tamoEvolution(tamo, evolution)[1]
-    temp_pointer = tamoEvolution(tamo,evolution)[0]
+    temp_pointer = tamoEvolution(tamo,evolution)
+    temp_pointer = temp_pointer[0]
 
     if prev_evo != evolution:
         print('----------------------------------------')
@@ -275,6 +276,7 @@ while True:
     if currentEvo[0] == 'egg':
         TempText = ScreenText(font.render(f'Temperature {round(tamo.Temp,2)}', True, black),(100,320))
         screen.blit(TempText.Text,TempText.rect)
+        isButtonPressed(HeatButton, False, None)
     #Showing text
     screen.blit(HungerText.Text,HungerText.rect)
     screen.blit(ThirstText.Text,ThirstText.rect)
@@ -291,7 +293,7 @@ while True:
     isButtonPressed(Drinkbutton, False, None)
     isButtonPressed(Excerbutton, True, animIteration)
     isButtonPressed(Washbutton, False, None)
-    isButtonPressed(HeatButton, False, None)
+
     #if isButtonPressed(Excerbutton, True, animIteration):
     #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1
