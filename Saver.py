@@ -299,6 +299,10 @@ class balanced1(Tamo):
         self.Weight = w
         self.Strength = s
 
+        self.image = pygame.image.load('tamoImages\gotchiBalance.png')
+        self.rect = self.image.get_rect()
+        self.rect.center = [340,360]
+
 class strong1(Tamo):
     #uses hunger and thirst quicker but makes strength quicker
     

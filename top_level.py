@@ -185,7 +185,7 @@ animIteration = 0
                         #pressed = True
 
 
-#All buttons need ot be created outside of while loop otherwise it slows the program down
+#All buttons need ot be created outside of while loop otherwise it slows the program downh
 
 Feedbutton = feedbutton()
 Drinkbutton = drinkbutton()
