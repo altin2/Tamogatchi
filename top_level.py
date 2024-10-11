@@ -18,7 +18,8 @@ clock = pygame.time.Clock()
 frame = int((1/60)*1000)
 
 OpenedAt = round(datetime.timestamp(datetime.now())/3600,2)
-
+buttons = pygame.sprite.Group()
+tamogotchis = pygame.sprite.Group()
 #ast.literal_eval(X) converts list to string 
 global f #this is our save file. we need to make this global becuase we use it in functions.
 f = open('Save.txt','r+')
@@ -91,22 +92,32 @@ def tamoEvolution(tamo, evolution):
     
     if state[0] == 'egg':
         currentEvo = egg(age)
+        tamogotchis.remove(tamo)
+        tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'toddler':
         currentEvo = toddler(age,0)
+        tamogotchis.remove(tamo)
+        tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'intelligent':
         currentEvo = intelligent1(age, intel, weight, strength)
+        tamogotchis.remove(tamo)
+        tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'strong':
         currentEvo = strong1(age, intel, weight, strength)
+        tamogotchis.remove(tamo)
+        tamogotchis.add(tamo)
         return currentEvo, evolution_temp
     
     elif state[0] == 'balanced':
         currentEvo = balanced1(age, intel, weight, strength)
+        tamogotchis.remove(tamo)
+        tamogotchis.add(tamo)
         return currentEvo, evolution_temp
 
 def forceEvolve(tamo, amt, button):
@@ -172,8 +183,7 @@ def isButtonPressed(button, isAnim, iter = None):
                         pressed = True
 name = ''
 pressed = False
-buttons = pygame.sprite.Group()
-tamogotchis = pygame.sprite.Group()
+
 animIteration = 0
     # set button = class of button
     # if not pressed:
@@ -233,8 +243,7 @@ while True:
     print('i linke ', tamoEvolution(tamo,evolution)[0])
 
     evolution = tamoEvolution(tamo, evolution)[1]
-    temp_pointer = tamoEvolution(tamo,evolution)
-    temp_pointer = temp_pointer[0]
+    temp_pointer = tamoEvolution(tamo,evolution)[0]
 
     if prev_evo != evolution:
         print('----------------------------------------')
