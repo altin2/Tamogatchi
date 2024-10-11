@@ -124,15 +124,17 @@ def forceEvolve(tamo, amt, button):
     
     global pressed
 
-    if not pygame.mouse.get_pressed()[0]:
-        pressed = False
+    if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
+        if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
+            if not pygame.mouse.get_pressed()[0]:
+                pressed = False
 
-    if not pressed:
-        if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
-            if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
-                if pygame.mouse.get_pressed()[0]:  
-                    tamo.Age += amt
-                    pressed == True
+    if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
+        if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
+            if not pressed and pygame.mouse.get_pressed()[0]:
+                print('evooooooooooooooooooooooooooooooooooooooooooooooooooooo')
+                tamo.Age += amt
+                pressed == True
 
 # def displayAtts(tamo):
 #     font = pygame.font.SysFont('Arial', 25)
@@ -269,7 +271,7 @@ while True:
     if not pygame.mouse.get_pressed()[0]:
         pressed = False
 
-    forceEvolve(tamo,5,ForceEvobuttton)
+    forceEvolve(tamo,2.5,ForceEvobuttton)
 
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(100,50))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(100,80))
@@ -314,6 +316,8 @@ while True:
     #         tamo.updateState()
 
     prev_evo = (evolution)
+
+    tamogotchis.update()
     
     buttons.draw(screen)
     tamogotchis.draw(screen)
