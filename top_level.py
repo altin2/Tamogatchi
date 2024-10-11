@@ -87,31 +87,41 @@ def tamoEvolution(tamo, evolution):
     weight = tamo.carryOver()[2]
     strength = tamo.carryOver()[3]
 
-    evolution == state[1]
+    evolution_temp = state[1]
     
     if state[0] == 'egg':
-        currentEvo = egg(tamo.Age)
-        return currentEvo,evolution
+        currentEvo = egg(age)
+        return currentEvo,evolution_temp
     
-    elif state[0] == 'child':
-        currentEvo = toddler()
-        return currentEvo,evolution
+    elif state[0] == 'toddler':
+        currentEvo = toddler(age,0)
+        return currentEvo,evolution_temp
     
     elif state[0] == 'intelligent':
         currentEvo = intelligent1(age, intel, weight, strength)
-        return currentEvo,evolution
+        return currentEvo,evolution_temp
     
     elif state[0] == 'strong':
         currentEvo = strong1(age, intel, weight, strength)
-        return currentEvo, evolution
+        return currentEvo, evolution_temp
     
     elif state[0] == 'balanced':
         currentEvo = balanced1(age, intel, weight, strength)
-        return currentEvo, evolution
+        return currentEvo, evolution_temp
 
-def forceEvolve(tamo, amt):
+def forceEvolve(tamo, amt, button):
+    
+    global pressed
 
-    tamo.age += amt
+    if not pygame.mouse.get_pressed()[0]:
+        pressed = False
+
+    if not pressed:
+        if (pygame.mouse.get_pos()[0] > button.rect.topleft[0] and pygame.mouse.get_pos()[0] < button.rect.topright[0]):
+            if (pygame.mouse.get_pos()[1] > button.rect.topleft[1] and pygame.mouse.get_pos()[1] < button.rect.bottomleft[1]):
+                if pygame.mouse.get_pressed()[0]:  
+                    tamo.Age += amt
+                    pressed == True
 
 # def displayAtts(tamo):
 #     font = pygame.font.SysFont('Arial', 25)
@@ -129,10 +139,11 @@ def forceEvolve(tamo, amt):
 #     tamo.Action
 #     tamo.name
 
-evolution = tamoEvolution(pointer, evolution)[1]
-temp_pointer = tamoEvolution(pointer,evolution)[0]
+evolution = tamoEvolution(tamo, evolution)[1]
+temp_pointer = tamoEvolution(tamo,evolution)[0]
 
 tamo = temp_pointer
+prev_evo = 0
 
 assignattributes()
 Timedifference = round(OpenedAt-tamo.LastOnline,2)
@@ -178,11 +189,15 @@ Feedbutton = feedbutton()
 Drinkbutton = drinkbutton()
 Excerbutton = excerciseButton()
 Washbutton = WashButton()
+ForceEvobuttton = forceEvo()
+HeatButton = heatButton()
 
 buttons.add(Feedbutton)
 buttons.add(Drinkbutton)
 buttons.add(Excerbutton)
 buttons.add(Washbutton)
+buttons.add(ForceEvobuttton)
+buttons.add(HeatButton)
 
 tamogotchis.add(tamo)
 
@@ -191,8 +206,10 @@ tamogotchis.add(tamo)
 
 while True:
 
+    print('current evo: ', evolution, '|prev evo', prev_evo)
+
     currentEvo = tamo.checkEvolve(evolution)
-    print(evolution)
+    #print(evolution)
     print(currentEvo)
 
     for event in pygame.event.get():
@@ -212,6 +229,19 @@ while True:
     # print(animIteration)
 
     #general tamo updates
+    print(tamoEvolution(tamo,evolution))
+    print('i linke ', tamoEvolution(tamo,evolution)[0])
+
+    evolution = tamoEvolution(tamo, evolution)[1]
+    temp_pointer = tamoEvolution(tamo,evolution)[0]
+
+    if prev_evo != evolution:
+        print('----------------------------------------')
+        tamo = temp_pointer
+
+    print('tamo is ', tamo)
+
+    tamogotchis.update()
 
     if currentEvo[0] == 'toddler' or currentEvo[0] == 'egg':
         tamo.updateState()
@@ -226,6 +256,10 @@ while True:
     tamo.checkAge(60)
     #tamo.checkEvolve
 
+    if not pygame.mouse.get_pressed()[0]:
+        pressed = False
+
+    forceEvolve(tamo,5,ForceEvobuttton)
 
     HungerText = ScreenText(font.render(f'Hunger {round(tamo.Hunger,2)}', True, black),(100,50))
     ThirstText = ScreenText(font.render(f'Thirst {round(tamo.Thirst,2)}', True, black),(100,80))
@@ -255,6 +289,7 @@ while True:
     isButtonPressed(Drinkbutton, False, None)
     isButtonPressed(Excerbutton, True, animIteration)
     isButtonPressed(Washbutton, False, None)
+    isButtonPressed(HeatButton, False, None)
     #if isButtonPressed(Excerbutton, True, animIteration):
     #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1
@@ -267,6 +302,7 @@ while True:
     #         animIteration += 1
     #         tamo.updateState()
 
+    prev_evo = (evolution)
     
     buttons.draw(screen)
     tamogotchis.draw(screen)

@@ -2,6 +2,7 @@ import pygame
 from Saver import *
 
 pygame.init()
+pygame.display.init()
 screen = pygame.display.set_mode([600,600])
 frame = int((1/60)*1000)
 
@@ -39,10 +40,7 @@ frame = int((1/60)*1000)
 def toddlerPlay(tamo, iter):
 
     #needs to have a variable for each iterationnin main while loop
-
-    age = tamo.carryOver()[0]
-    intel = tamo.carryOver()[1]
-    weight = tamo.carryOver()[2]
+    
     if iter < 6:
         return 1
     elif iter < 12:
@@ -70,11 +68,8 @@ def toddlerPlay(tamo, iter):
     
 def strongLift(tamo, iter):
 
-    #needs to have a variable for each iterationnin main while loop
+    #needs to have a variable for each iteration in main while loop
 
-    age = tamo.carryOver()[0]
-    intel = tamo.carryOver()[1]
-    weight = tamo.carryOver()[2]
     if iter < 6:
         return 1
     elif iter < 12:
@@ -94,39 +89,51 @@ def strongLift(tamo, iter):
     elif iter < 54:
         return 1
 
-animIteration = 0
-iteration = True
+if __name__ == '__main__':
+    animIteration = 0
+    iteration = True
 
-tod = toddler()
-strong = strong1(10)
-tod.updateState
-strong.updateState
+    tod = toddler(5)
+    strong = strong1(10)
 
-anims = pygame.sprite.Group()
+    tod.x_cord = 150
+    tod.y_cord = 300
 
-anims.add(tod)
-anims.add(strong)
+    strong.x_cord = 450
+    strong.y_cord = 300
 
-while __name__ == '__main__':
+    tod.updateState()
+    strong.updateState()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT: 
-            pygame.quit()
-    screen.fill((255,255,255))
+    anims = pygame.sprite.Group()
 
-    animIteration += 1
-    if animIteration >=66:
-        animIteration = 0
-        iteration = not iteration
+    anims.add(tod)
+    anims.add(strong)
 
-    if iteration:
-        tod.updateState
-    
-    if not iteration:
-        strong.updateState
-    
-    anims.draw(screen)
+    while True:
 
-    pygame.display.update()
-    pygame.time.wait(frame)
-    
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                pygame.quit()
+        screen.fill((255,255,255))
+
+        animIteration += 1
+        if animIteration >=66:
+            animIteration = 0
+            iteration = not iteration
+
+        if iteration:
+            tod.state = toddlerPlay(tod,animIteration)
+            tod.updateState()
+        
+        if not iteration:
+
+            strong.state = strongLift(strong, animIteration)
+            strong.updateState()
+        
+        print(animIteration)
+        anims.draw(screen)
+
+        pygame.display.update()
+        pygame.time.wait(frame)
+        

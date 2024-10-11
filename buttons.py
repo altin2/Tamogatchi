@@ -66,7 +66,15 @@ class forceEvo(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [600,600]
 
-    def action(self, tamo,iter):
-        tamo.drink(5)
-        print(tamo.Thirst)
-        iter = None
+
+class heatButton(pygame.sprite.Sprite):
+
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load('tamoImages\heatButton.png')
+        self.rect = self.image.get_rect()
+        self.rect.center = [600,200]
+
+    def action(self, tamo, iter):
+        print('yellow')
+        tamo.Temp += 10
