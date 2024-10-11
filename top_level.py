@@ -92,33 +92,34 @@ def tamoEvolution(tamo, evolution):
     
     if state[0] == 'egg':
         currentEvo = egg(age)
-        tamogotchis.remove(tamo)
+        tamogotchis.empty()
         tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'toddler':
         currentEvo = toddler(age,0)
-        tamogotchis.remove(tamo)
+        tamogotchis.empty()
         tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'intelligent':
         currentEvo = intelligent1(age, intel, weight, strength)
-        tamogotchis.remove(tamo)
+        tamogotchis.empty()
         tamogotchis.add(tamo)
         return currentEvo,evolution_temp
     
     elif state[0] == 'strong':
         currentEvo = strong1(age, intel, weight, strength)
-        tamogotchis.remove(tamo)
+        tamogotchis.empty()
         tamogotchis.add(tamo)
         return currentEvo, evolution_temp
     
     elif state[0] == 'balanced':
         currentEvo = balanced1(age, intel, weight, strength)
-        tamogotchis.remove(tamo)
+        tamogotchis.empty()
         tamogotchis.add(tamo)
         return currentEvo, evolution_temp
+
 
 def forceEvolve(tamo, amt, button):
     
@@ -318,7 +319,7 @@ while True:
     prev_evo = (evolution)
 
     tamogotchis.update()
-    
+
     buttons.draw(screen)
     tamogotchis.draw(screen)
     pygame.display.update()
