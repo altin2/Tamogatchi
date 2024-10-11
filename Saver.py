@@ -163,6 +163,9 @@ class Tamo(pygame.sprite.Sprite):
         
         #keep adding onto this
 
+    def checkHP(self):
+        print(':)')
+
 class egg(Tamo):
 
     def __init__(self, state = 0):
@@ -226,6 +229,11 @@ class egg(Tamo):
         
         else:
             self.Temp -= (1/frameRate)
+
+    def checkHP(self):
+        
+        if self.HP > 25:
+            self.HP = 25
   
 class toddler(Tamo):
 
@@ -306,6 +314,11 @@ class toddler(Tamo):
         self.Hygiene -= 10
 
         self.Hunger -= 15
+    
+    def checkHP(self):
+        
+        if self.HP > 50:
+            self.HP = 50
 
 class balanced1(Tamo):
     

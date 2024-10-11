@@ -246,6 +246,7 @@ while True:
 
     if currentEvo[0] == 'toddler' or currentEvo[0] == 'egg':
         tamo.updateState()
+        tamo.checkHP()
         print('hi')
     
     if currentEvo[0] == 'egg':
