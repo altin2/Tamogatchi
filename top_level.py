@@ -304,6 +304,9 @@ while True:
     isButtonPressed(Excerbutton, True, animIteration)
     isButtonPressed(Washbutton, False, None)
 
+    if currentEvo[0] != 'egg':
+        buttons.remove(HeatButton)
+
     #if isButtonPressed(Excerbutton, True, animIteration):
     #test_tod.state = toddlerPlay(test_tod, animIteration)
     animIteration += 1
