@@ -66,7 +66,6 @@ class forceEvo(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [600,600]
 
-
 class heatButton(pygame.sprite.Sprite):
 
     def __init__(self):
